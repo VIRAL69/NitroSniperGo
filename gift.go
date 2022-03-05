@@ -88,6 +88,7 @@ func checkCode(bodyString string, code string, user *discordgo.User, guild strin
 }
 
 func getCookieString() {
+	println("Cookies get requested")
 	var strRequestURI = []byte("https://discord.com/")
 	req := fasthttp.AcquireRequest()
 	req.Header.Set("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
@@ -146,7 +147,7 @@ func checkGiftLink(s *discordgo.Session, m *discordgo.MessageCreate, link string
 		logWithTime("<red>[=] Auto-detected a duplicate code: " + code[2] + " from " + m.Author.String() + "</>")
 		return
 	}
-
+	println("Checking Link...")
 	var strRequestURI = []byte("https://discordapp.com/api/v8/entitlements/gift-codes/" + code[2] + "/redeem")
 	req := fasthttp.AcquireRequest()
 	req.Header.SetContentType("application/json")
