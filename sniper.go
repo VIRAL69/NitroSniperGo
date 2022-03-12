@@ -307,10 +307,6 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if reGiftLink.Match([]byte(m.Content)) && SniperRunning {
 		checkGiftLink(s, m, m.Content, time.Now())
-	} else if settings.Giveaway.Enable && !contains(settings.Giveaway.BlacklistServers, m.GuildID) && (strings.Contains(strings.ToLower(m.Content), "**giveaway**") || (strings.Contains(strings.ToLower(m.Content), "react with") && strings.Contains(strings.ToLower(m.Content), "giveaway"))) && m.Author.Bot {
-		handleNewGiveaway(s, m)
-	} else if (strings.Contains(strings.ToLower(m.Content), "giveaway") || strings.Contains(strings.ToLower(m.Content), "win") || strings.Contains(strings.ToLower(m.Content), "won")) && strings.Contains(m.Content, s.State.User.ID) && m.Author.Bot {
-		handleGiveawayWon(s, m)
 	} else if rePrivnote.Match([]byte(m.Content)) && settings.Privnote.Enable {
 		checkPrivnote(s, m)
 	} else if reInviteLink.Match([]byte(m.Content)) && settings.Invite.Enable {
