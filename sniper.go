@@ -226,7 +226,6 @@ func webhookNitro(code string, user *discordgo.User, guild string, channel strin
 	if settings.Webhook.URL == "" || (status <= 0 && settings.Webhook.GoodOnly) {
 		return
 	}
-	var image = "https://i.redd.it/mvoen8wq3w831.png"
 	var color = "65290"
 
 	if status == 0 {
