@@ -250,7 +250,7 @@ func webhookNitro(code string, user *discordgo.User, guild string, channel strin
 			},
 			{
 			  "name": "Status",
-			  "value": "` + status + `",
+			  "value": "` + string(status) + `",
 			  "inline": false
 			},
 			{
